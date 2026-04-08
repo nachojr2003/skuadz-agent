@@ -713,13 +713,37 @@
       div.className = 'sk-msg ' + role;
       if (role === 'bot') {
         div.innerHTML = `<div class="sk-avatar"><img src="${LOGO}" alt=""></div><div class="sk-bubble"></div>`;
-        div.querySelector('.sk-bubble').innerHTML = md(text);
+        msgs.appendChild(div);
+        scrollBottom();
+        return typeText(div.querySelector('.sk-bubble'), text, div);
       } else {
         div.innerHTML = `<div class="sk-bubble">${md(text)}</div>`;
+        msgs.appendChild(div);
+        scrollBottom(); saveMessages();
+        return Promise.resolve(div);
       }
-      msgs.appendChild(div);
-      scrollBottom(); saveMessages();
-      return div;
+    }
+
+    function typeText(bubble, text, div) {
+      return new Promise(resolve => {
+        const rendered = md(text);
+        // Type plain text char by char, then swap to full HTML at the end
+        const plain = text.replace(/\*\*(.*?)\*\*/g,'$1').replace(/\*(.*?)\*/g,'$1').replace(/^[-•]\s/gm,'').replace(/\n/g,' ');
+        let i = 0;
+        const speed = () => Math.floor(Math.random() * 25) + 18; // 18-42ms entre letras
+        function tick() {
+          if (i < plain.length) {
+            bubble.textContent = plain.slice(0, ++i);
+            scrollBottom();
+            setTimeout(tick, speed());
+          } else {
+            bubble.innerHTML = rendered;
+            scrollBottom(); saveMessages();
+            resolve(div);
+          }
+        }
+        tick();
+      });
     }
 
     function addContactBtn(msgDiv) {
@@ -746,7 +770,7 @@
         msgs.querySelectorAll('.sk-contact-btn').forEach(b => { b.onclick = openForm; });
         scrollBottom();
       } else {
-        addMsg('¡Hola! Soy el asistente de Skuadz. ¿Tienes preguntas sobre nuestra plataforma o cómo puede ayudar a tu club?', 'bot');
+        setTimeout(() => addMsg('¡Hola! Soy el asistente de Skuadz. ¿Tienes preguntas sobre nuestra plataforma o cómo puede ayudar a tu club?', 'bot'), 400);
       }
     }
 
@@ -763,12 +787,12 @@
         });
         const data = await res.json(); typing.remove();
         const reply = data.output || data.message || 'Lo siento, no pude procesar tu mensaje.';
-        const botMsg = addMsg(reply, 'bot');
+        const botMsg = await addMsg(reply, 'bot');
         if (!formShown && (reply.toLowerCase().includes('equipo') || reply.toLowerCase().includes('contactar'))) {
           addContactBtn(botMsg); saveMessages();
         }
       } catch {
-        typing.remove(); addMsg('Hubo un error de conexión. Inténtalo de nuevo.', 'bot');
+        typing.remove(); await addMsg('Hubo un error de conexión. Inténtalo de nuevo.', 'bot');
       } finally {
         loading = false; sendBtn.disabled = false;
       }
