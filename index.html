@@ -727,8 +727,10 @@
     function typeText(bubble, text, div) {
       return new Promise(resolve => {
         const rendered = md(text);
-        // Type plain text char by char, then swap to full HTML at the end
-        const plain = text.replace(/\*\*(.*?)\*\*/g,'$1').replace(/\*(.*?)\*/g,'$1').replace(/^[-•]\s/gm,'').replace(/\n/g,' ');
+        // Extract plain text from rendered HTML so spacing is always correct
+        const tmp = document.createElement('div');
+        tmp.innerHTML = rendered.replace(/<br\s*\/?>/gi, ' ').replace(/<\/li>/gi, ' ');
+        const plain = (tmp.textContent || '').replace(/\s+/g, ' ').trim();
         let i = 0;
         const speed = () => Math.floor(Math.random() * 25) + 18; // 18-42ms entre letras
         function tick() {
