@@ -27,7 +27,7 @@
 <body class="bg-white text-gray-900">
 
   <!-- Navigation -->
-  <header class="bg-white border-b border-gray-100 px-8 py-3 sticky top-0 z-50">
+  <header class="bg-white border-b border-gray-100 px-5 md:px-8 py-3 sticky top-0 z-50">
     <nav class="max-w-7xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-2">
         <div class="w-8 h-8 bg-brand-yellow rounded-lg flex items-center justify-center">
@@ -37,7 +37,8 @@
         </div>
         <span class="font-extrabold text-xl text-gray-900 tracking-tight">Skuadz</span>
       </div>
-      <div class="flex items-center gap-7">
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-7">
         <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Funcionalidades</a>
         <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Beneficios</a>
         <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Deportes</a>
@@ -54,23 +55,49 @@
           </svg>
         </button>
       </div>
+      <!-- Mobile hamburger -->
+      <button id="nav-toggle" class="md:hidden p-2 rounded-lg text-gray-600" aria-label="Abrir menú">
+        <svg id="nav-icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M3 6h16M3 11h16M3 16h16"/>
+        </svg>
+        <svg id="nav-icon-close" class="hidden" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M5 5l12 12M17 5L5 17"/>
+        </svg>
+      </button>
     </nav>
+    <!-- Mobile menu -->
+    <div id="nav-menu" class="hidden md:hidden px-1 pb-4 pt-2 flex flex-col gap-1">
+      <a href="#" class="text-sm font-semibold text-gray-700 py-2 px-2 rounded-lg hover:bg-gray-50">Funcionalidades</a>
+      <a href="#" class="text-sm font-semibold text-gray-700 py-2 px-2 rounded-lg hover:bg-gray-50">Beneficios</a>
+      <a href="#" class="text-sm font-semibold text-gray-700 py-2 px-2 rounded-lg hover:bg-gray-50">Deportes</a>
+      <a href="#" class="text-sm font-semibold text-gray-700 py-2 px-2 rounded-lg hover:bg-gray-50">Precios</a>
+    </div>
   </header>
+  <script>
+    document.getElementById('nav-toggle').addEventListener('click', function() {
+      const menu = document.getElementById('nav-menu');
+      const open = document.getElementById('nav-icon-open');
+      const close = document.getElementById('nav-icon-close');
+      menu.classList.toggle('hidden');
+      open.classList.toggle('hidden');
+      close.classList.toggle('hidden');
+    });
+  </script>
 
   <!-- Hero Section -->
-  <section class="bg-[#faf9ee] py-20 px-8 overflow-hidden">
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-16 items-center">
+  <section class="bg-[#faf9ee] py-12 md:py-20 px-5 md:px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
       <!-- Left: Text -->
-      <div>
-        <h1 class="text-6xl font-black leading-tight text-gray-900 mb-0">Menos WhatsApp.</h1>
-        <h1 class="text-6xl font-black leading-tight text-brand-yellow mb-5">Más deporte.</h1>
-        <p class="text-lg font-semibold text-gray-700 mb-2">
+      <div class="text-center md:text-left">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-gray-900 mb-0">Menos WhatsApp.</h1>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-brand-yellow mb-4 md:mb-5">Más deporte.</h1>
+        <p class="text-base md:text-lg font-semibold text-gray-700 mb-2">
           La app que organiza la comunicación de tu club y te ahorra hasta <strong class="text-gray-900 font-bold">10 horas semanales</strong> en gestión.
         </p>
-        <p class="text-base text-gray-500 mb-8 font-medium">
+        <p class="text-sm md:text-base text-gray-500 mb-7 md:mb-8 font-medium">
           Centraliza equipos, convocatorias, noticias y eventos en un solo lugar. Sin caos. Sin mensajes perdidos.
         </p>
-        <div class="flex gap-3">
+        <div class="flex gap-3 justify-center md:justify-start flex-wrap">
           <!-- App Store Button -->
           <a href="#" class="bg-black text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 hover:bg-gray-800 min-w-[145px]">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +125,7 @@
       </div>
 
       <!-- Right: Phone Mockup -->
-      <div class="flex justify-center items-center">
+      <div class="flex justify-center items-center order-first md:order-last">
         <div class="relative w-[260px]">
           <!-- Phone frame -->
           <div class="relative bg-[#111] rounded-[44px] p-[10px] shadow-2xl" style="box-shadow: 0 40px 80px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)">
@@ -231,15 +258,15 @@
   </section>
 
   <!-- Features Section -->
-  <section class="bg-slate-50 py-20 px-8">
+  <section class="bg-slate-50 py-14 md:py-20 px-5 md:px-8">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-black text-gray-900 mb-4">No más grupos de WhatsApp descontrolados</h2>
-        <p class="text-gray-500 max-w-sm mx-auto text-base font-medium leading-snug">
+      <div class="text-center mb-10 md:mb-12">
+        <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-4">No más grupos de WhatsApp descontrolados</h2>
+        <p class="text-gray-500 max-w-sm mx-auto text-sm md:text-base font-medium leading-snug">
           Comunica de manera efectiva la información relevante de tu club a entrenadores, jugadores y familias. Todo en una sola aplicación móvil.
         </p>
       </div>
-      <div class="grid grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
         <!-- Feature 1 -->
         <div class="bg-white rounded-2xl p-6">
           <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
@@ -305,13 +332,13 @@
   </section>
 
   <!-- Benefits Section -->
-  <section class="bg-white py-20 px-8">
+  <section class="bg-white py-14 md:py-20 px-5 md:px-8">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-black text-gray-900 mb-3">Beneficios por perfil</h2>
-        <p class="text-gray-500 text-base font-medium">Skuadz aporta valor a todos los niveles del club.</p>
+      <div class="text-center mb-10 md:mb-12">
+        <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-3">Beneficios por perfil</h2>
+        <p class="text-gray-500 text-sm md:text-base font-medium">Skuadz aporta valor a todos los niveles del club.</p>
       </div>
-      <div class="grid grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <!-- Club -->
         <div>
           <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-5">
@@ -371,11 +398,11 @@
   </section>
 
   <!-- Sports Section -->
-  <section class="bg-slate-50 py-20 px-8">
+  <section class="bg-slate-50 py-14 md:py-20 px-5 md:px-8">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-black text-gray-900 mb-3">Para todos los deportes</h2>
-        <p class="text-gray-500 text-base font-medium max-w-sm mx-auto leading-snug">Skuadz se adapta a la dinámica de cada disciplina, ya sea un equipo, un grupo o una clase.</p>
+      <div class="text-center mb-10 md:mb-12">
+        <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-3">Para todos los deportes</h2>
+        <p class="text-gray-500 text-sm md:text-base font-medium max-w-sm mx-auto leading-snug">Skuadz se adapta a la dinámica de cada disciplina, ya sea un equipo, un grupo o una clase.</p>
       </div>
       <div class="flex justify-center items-start gap-6 flex-wrap">
         <div class="flex flex-col items-center gap-2 w-16">
@@ -443,16 +470,16 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="bg-[#faf9ee] py-24 px-8">
+  <section class="bg-[#faf9ee] py-16 md:py-24 px-5 md:px-8">
     <div class="max-w-2xl mx-auto text-center">
       <div class="inline-flex items-center bg-brand-yellow text-gray-900 text-[11px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">
         Acceso Anticipado
       </div>
-      <h2 class="text-5xl font-black text-gray-900 mb-5 leading-tight">Empieza a usar Skuadz gratis</h2>
-      <p class="text-gray-500 text-base font-medium mb-8 max-w-lg mx-auto leading-relaxed">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-5 leading-tight">Empieza a usar Skuadz gratis</h2>
+      <p class="text-gray-500 text-sm md:text-base font-medium mb-8 max-w-lg mx-auto leading-relaxed">
         Usa todas las funciones sin coste y sin restricciones. Los clubes que se registren ahora obtendrán ventajas exclusivas cuando lancemos los planes de pago.
       </p>
-      <a href="#" class="inline-block bg-gray-900 text-white font-bold px-10 py-4 rounded-full text-base hover:bg-black mb-4 transition-colors">
+      <a href="#" class="inline-block bg-gray-900 text-white font-bold px-8 md:px-10 py-4 rounded-full text-base hover:bg-black mb-4 transition-colors">
         Descargar gratis
       </a>
       <p class="text-gray-400 text-sm font-medium">Acceso completo. Sin tarjeta de crédito. Configuración en menos de 1 minuto.</p>
@@ -460,10 +487,10 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-brand-navy text-white py-5 px-8">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <p class="text-gray-400 text-sm font-medium">© 2026 Skuadz. Todos los derechos reservados.</p>
-      <div class="flex gap-6">
+  <footer class="bg-brand-navy text-white py-6 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
+      <p class="text-gray-400 text-sm font-medium text-center md:text-left">© 2026 Skuadz. Todos los derechos reservados.</p>
+      <div class="flex gap-5 md:gap-6">
         <a href="#" class="text-gray-400 text-sm font-medium hover:text-white transition-colors">Términos y condiciones</a>
         <a href="#" class="text-gray-400 text-sm font-medium hover:text-white transition-colors">Política de privacidad</a>
       </div>
