@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skuadz - Menos WhatsApp. Más deporte.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Darker Grotesque', 'sans-serif'] },
+          colors: {
+            brand: { yellow: '#ffeb00', navy: '#1a1a2e' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Darker Grotesque', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Navigation -->
+  <header class="bg-white border-b border-gray-100 px-8 py-3 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-brand-yellow rounded-lg flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2L3 9l3 1.5L4.5 16l6-7-3-1L9 2z" fill="#1a1a2e"/>
+          </svg>
+        </div>
+        <span class="font-extrabold text-xl text-gray-900 tracking-tight">Skuadz</span>
+      </div>
+      <div class="flex items-center gap-7">
+        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Funcionalidades</a>
+        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Beneficios</a>
+        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Deportes</a>
+        <a href="#" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Precios</a>
+        <button class="flex items-center gap-1.5 text-sm font-semibold text-gray-600 border border-gray-200 rounded-full px-3 py-1.5">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
+            <ellipse cx="7" cy="7" rx="2.5" ry="6" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M1 7h12" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          ES
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-[#faf9ee] py-20 px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-16 items-center">
+      <!-- Left: Text -->
+      <div>
+        <h1 class="text-6xl font-black leading-tight text-gray-900 mb-0">Menos WhatsApp.</h1>
+        <h1 class="text-6xl font-black leading-tight text-brand-yellow mb-5">Más deporte.</h1>
+        <p class="text-lg font-semibold text-gray-700 mb-2">
+          La app que organiza la comunicación de tu club y te ahorra hasta <strong class="text-gray-900 font-bold">10 horas semanales</strong> en gestión.
+        </p>
+        <p class="text-base text-gray-500 mb-8 font-medium">
+          Centraliza equipos, convocatorias, noticias y eventos en un solo lugar. Sin caos. Sin mensajes perdidos.
+        </p>
+        <div class="flex gap-3">
+          <!-- App Store Button -->
+          <a href="#" class="bg-black text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 hover:bg-gray-800 min-w-[145px]">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.2 11.3c0-2.6 2.1-3.9 2.2-4-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1 1-3.9 1-.8 0-2-.9-3.3-.9C4.3 5.4 2 7.3 2 11c0 4.7 3.2 9.5 5.2 9.5.8 0 1.5-.5 2.7-.5 1.2 0 1.8.5 2.8.5 2.1 0 4.3-4.5 4.7-8.2-.5-.2-2.2-1.1-2.2-3zM12.8 3.6c.9-1.1 1.5-2.6 1.3-4.1-.9.1-2.1 1-2.8 2.1-.7 1-1.4 2.4-1.2 3.9 1 .1 2.1-.7 2.7-1.9z"/>
+            </svg>
+            <div>
+              <div class="text-[10px] leading-none opacity-70 font-medium">Consíguelo en el</div>
+              <div class="text-sm font-bold leading-tight">App Store</div>
+            </div>
+          </a>
+          <!-- Google Play Button -->
+          <a href="#" class="bg-black text-white rounded-xl px-4 py-2.5 flex items-center gap-2.5 hover:bg-gray-800 min-w-[155px]">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.5 2.3L12.7 11 3.5 19.7c-.3-.3-.5-.7-.5-1.2V3.5c0-.5.2-.9.5-1.2z" fill="#EA4335"/>
+              <path d="M16.8 8.4L14 9.9 12.7 11l1.3 1.1 2.8 1.5 2.7-1.5c.4-.4.7-.9.7-1.5 0-.6-.3-1.1-.7-1.5l-2.7-1.7z" fill="#FBBC04"/>
+              <path d="M3.5 2.3C3.8 2 4.2 1.8 4.7 2l11 6.4-2.9 1.6L3.5 2.3z" fill="#4285F4"/>
+              <path d="M3.5 19.7l9.3-7.6 2.9 1.6L4.7 20c-.5.2-.9 0-1.2-.3z" fill="#34A853"/>
+            </svg>
+            <div>
+              <div class="text-[10px] leading-none opacity-70 font-medium uppercase">Descargar en</div>
+              <div class="text-sm font-bold leading-tight">Google Play</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Phone Mockup -->
+      <div class="flex justify-center items-center">
+        <div class="relative w-[260px]">
+          <!-- Phone frame -->
+          <div class="relative bg-[#111] rounded-[44px] p-[10px] shadow-2xl" style="box-shadow: 0 40px 80px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)">
+            <!-- Screen -->
+            <div class="bg-white rounded-[36px] overflow-hidden" style="height: 530px;">
+              <!-- Status bar -->
+              <div class="relative bg-white px-5 pt-3.5 pb-1 flex justify-between items-center text-xs font-bold text-gray-900">
+                <span>14:06</span>
+                <!-- Dynamic Island -->
+                <div class="absolute top-3 left-1/2 -translate-x-1/2 w-[90px] h-[26px] bg-black rounded-full"></div>
+                <div class="flex items-center gap-1">
+                  <svg width="12" height="10" viewBox="0 0 12 10" fill="#111"><rect x="0" y="3" width="2" height="7" rx="0.5"/><rect x="3" y="2" width="2" height="8" rx="0.5"/><rect x="6" y="1" width="2" height="9" rx="0.5"/><rect x="9" y="0" width="2" height="10" rx="0.5"/></svg>
+                  <svg width="14" height="10" viewBox="0 0 14 10" fill="#111"><path d="M7 3C4.8 3 2.9 3.9 1.5 5.3L0 3.8C1.9 2 4.3 1 7 1s5.1 1 7 2.8l-1.5 1.5C11.1 3.9 9.2 3 7 3zm0 3c-1.3 0-2.5.5-3.4 1.3L2.1 5.8C3.4 4.7 5.1 4 7 4s3.6.7 4.9 1.8l-1.5 1.5C9.5 6.5 8.3 6 7 6zm0 3c-.8 0-1.5.3-2 .8L7 12l2-2.2c-.5-.5-1.2-.8-2-.8z"/></svg>
+                  <svg width="20" height="10" viewBox="0 0 20 10" fill="#111"><rect x="0" y="1.5" width="16" height="7" rx="2" stroke="#111" stroke-width="1" fill="none"/><rect x="17" y="3.5" width="2" height="3" rx="1" fill="#111"/><rect x="1" y="2.5" width="10" height="5" rx="1" fill="#111"/></svg>
+                </div>
+              </div>
+
+              <!-- App Header -->
+              <div class="px-4 pt-2 pb-2 border-b border-gray-100">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 flex items-center justify-center text-xs font-black text-gray-900">IR</div>
+                    <div>
+                      <div class="text-[9px] text-gray-400 font-medium">entrenador</div>
+                      <div class="text-xs font-black text-gray-900 leading-none">IRUNWITHLEIVA</div>
+                    </div>
+                  </div>
+                  <div class="flex gap-1.5">
+                    <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2a4 4 0 100 8A4 4 0 006 2zM2 6a4 4 0 118 0A4 4 0 012 6z" stroke="#9ca3af" stroke-width="1.2"/><path d="M6 4v2l1 1" stroke="#9ca3af" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4" stroke="#9ca3af" stroke-width="1.2"/><path d="M6 4v4M4 6h4" stroke="#9ca3af" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Search bar -->
+              <div class="px-4 pt-2 pb-1">
+                <div class="bg-gray-100 rounded-full px-3 py-1.5 flex items-center gap-1.5">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="4.5" cy="4.5" r="3.5" stroke="#9ca3af" stroke-width="1.2"/><path d="M7.5 7.5L10 10" stroke="#9ca3af" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  <span class="text-[10px] text-gray-400">Añadir grupo</span>
+                </div>
+              </div>
+
+              <!-- Filters -->
+              <div class="px-4 py-1 flex items-center justify-between">
+                <div class="flex gap-1.5">
+                  <span class="bg-gray-900 text-white rounded-full px-2.5 py-0.5 text-[10px] font-semibold">Lista</span>
+                  <span class="text-[10px] text-gray-500 flex items-center gap-0.5 font-medium">▼</span>
+                </div>
+                <span class="text-[10px] text-gray-500 font-medium">Todos ▾</span>
+              </div>
+
+              <!-- Events list -->
+              <div class="overflow-hidden">
+                <!-- Event 1 - Marathon -->
+                <div class="px-4 py-2 border-b border-gray-100 flex gap-3 items-start">
+                  <div class="text-center w-10 shrink-0">
+                    <div class="text-[9px] text-gray-400 font-semibold uppercase">DOM</div>
+                    <div class="text-xl font-black text-gray-900 leading-none">15</div>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[11px] font-bold text-gray-900 leading-tight">Zurich Marató de Barcelona</div>
+                    <div class="text-[10px] text-brand-yellow font-semibold">0:00 → 24:00</div>
+                    <div class="text-[10px] text-gray-400">Barcelona</div>
+                  </div>
+                </div>
+                <!-- Event 2 - Course -->
+                <div class="px-4 py-2 border-b border-gray-100 flex gap-3 items-start">
+                  <div class="text-center w-10 shrink-0">
+                    <div class="text-[9px] text-gray-400 font-semibold uppercase">DOM</div>
+                    <div class="text-xl font-black text-gray-900 leading-none">15</div>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[11px] font-bold text-gray-900 leading-tight">I Curso Solidaria Terrassa Es...</div>
+                    <div class="text-[10px] text-gray-400">Terrassa</div>
+                  </div>
+                </div>
+                <!-- Event 3 - Training -->
+                <div class="px-4 py-2 border-b border-gray-100 flex gap-3 items-start">
+                  <div class="text-center w-10 shrink-0">
+                    <div class="text-[9px] text-gray-400 font-semibold uppercase">LUN</div>
+                    <div class="text-xl font-black text-gray-900 leading-none">16</div>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[11px] font-bold text-gray-900 leading-tight">Entrenamiento</div>
+                    <div class="text-[10px] text-gray-400">7:00 → 8:30</div>
+                    <div class="text-[10px] text-gray-400">Parc Valparaíso (Sala / Bodrina)</div>
+                  </div>
+                  <div class="w-5 h-5 rounded-full bg-gray-100 shrink-0"></div>
+                </div>
+                <!-- Event 4 - Training -->
+                <div class="px-4 py-2 border-b border-gray-100 flex gap-3 items-start">
+                  <div class="text-center w-10 shrink-0">
+                    <div class="text-[9px] text-gray-400 font-semibold uppercase">MAR</div>
+                    <div class="text-xl font-black text-gray-900 leading-none">17</div>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[11px] font-bold text-gray-900 leading-tight">Entrenamiento</div>
+                    <div class="text-[10px] text-gray-400">Parc Naciones Unidas</div>
+                  </div>
+                  <div class="w-5 h-5 rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2v6" stroke="#111" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom nav -->
+              <div class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around items-center py-2 px-6" style="border-radius: 0 0 36px 36px;">
+                <div class="flex flex-col items-center gap-0.5">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 7l6-5 6 5v9H3V7z" stroke="#9ca3af" stroke-width="1.3"/></svg>
+                  <span class="text-[9px] text-gray-400 font-medium">Noticias</span>
+                </div>
+                <div class="flex flex-col items-center gap-0.5">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="#ffeb00"><rect x="2" y="3" width="14" height="13" rx="2" fill="#ffeb00"/><path d="M5 1v3M13 1v3M2 8h14" stroke="#111" stroke-width="1.3" stroke-linecap="round"/></svg>
+                  <span class="text-[9px] text-gray-900 font-bold">Eventos</span>
+                </div>
+                <div class="flex flex-col items-center gap-0.5">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#9ca3af" stroke-width="1.3"/><path d="M9 5v4l3 2" stroke="#9ca3af" stroke-width="1.3" stroke-linecap="round"/></svg>
+                  <span class="text-[9px] text-gray-400 font-medium">Info</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-slate-50 py-20 px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-black text-gray-900 mb-4">No más grupos de WhatsApp descontrolados</h2>
+        <p class="text-gray-500 max-w-sm mx-auto text-base font-medium leading-snug">
+          Comunica de manera efectiva la información relevante de tu club a entrenadores, jugadores y familias. Todo en una sola aplicación móvil.
+        </p>
+      </div>
+      <div class="grid grid-cols-3 gap-5">
+        <!-- Feature 1 -->
+        <div class="bg-white rounded-2xl p-6">
+          <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.87"/><path d="M15 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Canales de Equipo</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-medium">Espacios privados para cada categoría. Eventos, noticias y convocatorias exclusivas para miembros del equipo.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="bg-white rounded-2xl p-6">
+          <div class="w-11 h-11 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Noticias Generales</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-medium">Envía comunicados oficiales a todo el club al instante. Asegúrate de que todos reciben la información importante.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="bg-white rounded-2xl p-6">
+          <div class="w-11 h-11 bg-violet-100 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Calendario de Eventos</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-medium">Partidos, entrenamientos, competiciones, etc. Información bien organizada, fácil de encontrar y siempre accesible.</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="bg-white rounded-2xl p-6">
+          <div class="w-11 h-11 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Convocatorias y Asistencias</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-medium">Gestiona convocatorias en segundos y confirma asistencias con un toque. Todos al día, sin mensajes perdidos.</p>
+        </div>
+        <!-- Feature 5 -->
+        <div class="bg-white rounded-2xl p-6">
+          <div class="w-11 h-11 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Notificaciones Push</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-medium">Envía notificaciones al instante de convocatorias, cambios de última hora y comunicados importantes. Nadie se queda sin enterarse.</p>
+        </div>
+        <!-- Feature 6 -->
+        <div class="bg-white rounded-2xl p-6">
+          <div class="w-11 h-11 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#6366f1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base text-gray-900 mb-2">Privacidad Total</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-medium">Cumplimos con RGPD. Los datos de tus jugadores están seguros y bajo tu control total.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="bg-white py-20 px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-black text-gray-900 mb-3">Beneficios por perfil</h2>
+        <p class="text-gray-500 text-base font-medium">Skuadz aporta valor a todos los niveles del club.</p>
+      </div>
+      <div class="grid grid-cols-3 gap-10">
+        <!-- Club -->
+        <div>
+          <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10l11-8 11 8v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10z"/><polyline points="10 26 10 14 18 14 18 26"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">Club</h3>
+          <p class="text-red-400 text-xs font-bold tracking-widest uppercase mb-3">Dirección / Coordinación</p>
+          <p class="font-bold text-gray-900 text-[15px] mb-5 leading-snug">Una forma clara y oficial de comunicar sin caos.</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Comunicación oficial y coherente</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Menos malentendidos con familias</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Imagen de club organizada y moderno</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Ahorro de tiempo para coordinadores</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Base sólida para crecer</li>
+          </ul>
+        </div>
+        <!-- Entrenadores -->
+        <div>
+          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 26v-2a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v2"/><circle cx="11.5" cy="8" r="5"/><path d="M27 26v-2a5 5 0 0 0-3.75-4.84"/><path d="M19 3.16a5 5 0 0 1 0 9.68"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">Entrenadores</h3>
+          <p class="text-blue-400 text-xs font-bold tracking-widest uppercase mb-3">Cuerpo Técnico</p>
+          <p class="font-bold text-gray-900 text-[15px] mb-5 leading-snug">Deja de perseguir respuestas y céntrate en entrenar.</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Saber quién viene (sin insistir)</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Menos mensajes, menos ruido</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Autoridad y claridad</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Todo en un solo sitio</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Menos estrés mental</li>
+          </ul>
+        </div>
+        <!-- Jugadores y Familias -->
+        <div>
+          <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 26v-2a5 5 0 0 0-5-5H9a5 5 0 0 0-5 5v2"/><circle cx="13" cy="8" r="5"/><path d="M28 26v-2a5 5 0 0 0-3.75-4.84"/><path d="M21 3.16a5 5 0 0 1 0 9.68"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-black text-gray-900 mb-1">Jugadores y Familias</h3>
+          <p class="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-3">Usuarios</p>
+          <p class="font-bold text-gray-900 text-[15px] mb-5 leading-snug">Todo claro, sin los mensajes perdidos entre conversaciones.</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Saber siempre qué toca</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Confirmar en un clic</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Menos saturación de mensajes</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Sensación de orden y profesionalidad</li>
+            <li class="flex items-center gap-2.5 text-sm font-semibold text-gray-600"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#d1fae5"/><path d="M5.5 9l2.5 2.5 5-5" stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Mejor relación con el entrenador</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Section -->
+  <section class="bg-slate-50 py-20 px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-black text-gray-900 mb-3">Para todos los deportes</h2>
+        <p class="text-gray-500 text-base font-medium max-w-sm mx-auto leading-snug">Skuadz se adapta a la dinámica de cada disciplina, ya sea un equipo, un grupo o una clase.</p>
+      </div>
+      <div class="flex justify-center items-start gap-6 flex-wrap">
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="6" r="3"/><path d="M10 26V16l-4-4 2-6h10l2 6-4 4v10"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Fútbol</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="5" r="3"/><path d="M7 10l2 4 4 2 4-2 2-4M13 26V14"/><path d="M8 26l5-12 5 12"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Atletismo</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="13" r="9"/><path d="M9 9l4 4-4 4M17 9l-4 4 4 4"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Baloncesto</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="6" r="3"/><path d="M7 22l6-12 6 12M7 15h12"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Balonmano</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="13" r="7"/><path d="M6 13h14M13 6v14"/><path d="M8 8c3 2 7 2 10 0M8 18c3-2 7-2 10 0"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Fútbol Sala</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="6" r="3"/><path d="M4 18c3-6 15-6 18 0"/><path d="M7 12c0 4 12 4 12 0"/><path d="M10 22h6"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Waterpolo</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="6" r="3"/><path d="M5 26c2-4 4-6 8-6s6 2 8 6"/><path d="M9 14l-4 6M17 14l4 6M9 14h8"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Natación</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="5"/><path d="M13 13l9 9"/><circle cx="20" cy="6" r="2"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Tenis</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><rect x="6" y="4" width="10" height="14" rx="5"/><path d="M6 18l-3 5M16 18l3 5M9 26h8"/><circle cx="20" cy="8" r="2"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Pádel</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-16">
+          <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"><circle cx="13" cy="5" r="3"/><path d="M8 10l5 4 5-4"/><path d="M13 14v6"/><path d="M9 20l-3 4M17 20l3 4"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold text-center">Gimnasia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-[#faf9ee] py-24 px-8">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="inline-flex items-center bg-brand-yellow text-gray-900 text-[11px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">
+        Acceso Anticipado
+      </div>
+      <h2 class="text-5xl font-black text-gray-900 mb-5 leading-tight">Empieza a usar Skuadz gratis</h2>
+      <p class="text-gray-500 text-base font-medium mb-8 max-w-lg mx-auto leading-relaxed">
+        Usa todas las funciones sin coste y sin restricciones. Los clubes que se registren ahora obtendrán ventajas exclusivas cuando lancemos los planes de pago.
+      </p>
+      <a href="#" class="inline-block bg-gray-900 text-white font-bold px-10 py-4 rounded-full text-base hover:bg-black mb-4 transition-colors">
+        Descargar gratis
+      </a>
+      <p class="text-gray-400 text-sm font-medium">Acceso completo. Sin tarjeta de crédito. Configuración en menos de 1 minuto.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-navy text-white py-5 px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <p class="text-gray-400 text-sm font-medium">© 2026 Skuadz. Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-gray-400 text-sm font-medium hover:text-white transition-colors">Términos y condiciones</a>
+        <a href="#" class="text-gray-400 text-sm font-medium hover:text-white transition-colors">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       SKUADZ — Widget de Chat Embebido
+       ================================================================ -->
+  <style>
+    :root {
+      --sk-primary: #CCFF00;
+      --sk-primary-dark: #aad900;
+      --sk-dark: #111111;
+      --sk-dark2: #1e1e1e;
+      --sk-gray: #f5f5f5;
+      --sk-gray2: #e5e5e5;
+      --sk-text: #222222;
+      --sk-text-soft: #666666;
+      --sk-white: #ffffff;
+      --sk-radius: 16px;
+    }
+    #sk-btn {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 62px; height: 62px; border-radius: 50%;
+      background: var(--sk-dark); border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.28); z-index: 9999;
+      overflow: hidden; padding: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    #sk-btn:hover { transform: scale(1.07); box-shadow: 0 6px 28px rgba(0,0,0,0.36); }
+    #sk-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #sk-chat-win, #sk-form-win {
+      position: fixed; bottom: 100px; right: 24px;
+      width: 370px; max-height: 580px; background: var(--sk-white);
+      border-radius: var(--sk-radius); box-shadow: 0 10px 48px rgba(0,0,0,0.18);
+      display: flex; flex-direction: column; z-index: 9998; overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    #sk-chat-win.sk-hidden, #sk-form-win.sk-hidden {
+      opacity: 0; pointer-events: none; transform: translateY(10px);
+    }
+    .sk-header {
+      background: var(--sk-dark); padding: 13px 16px;
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .sk-header-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; background: var(--sk-dark2); flex-shrink: 0; }
+    .sk-header-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .sk-header-info { flex: 1; }
+    .sk-header-name { font-weight: 700; font-size: 15px; color: var(--sk-white); }
+    .sk-header-sub { font-size: 12px; color: var(--sk-primary); margin-top: 1px; }
+    .sk-header-close { background: none; border: none; color: #777; font-size: 22px; cursor: pointer; padding: 0; line-height: 1; transition: color 0.15s; }
+    .sk-header-close:hover { color: var(--sk-white); }
+    .sk-header-title { font-weight: 700; font-size: 15px; color: var(--sk-white); flex: 1; }
+    #sk-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+    #sk-messages::-webkit-scrollbar { width: 4px; }
+    #sk-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+    .sk-msg { display: flex; gap: 8px; max-width: 88%; }
+    .sk-msg.bot { align-self: flex-start; align-items: flex-start; }
+    .sk-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+    .sk-avatar { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--sk-dark); margin-top: 2px; }
+    .sk-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .sk-bubble { padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.55; color: var(--sk-text); }
+    .sk-msg.bot .sk-bubble { background: var(--sk-gray); border-top-left-radius: 4px; }
+    .sk-msg.user .sk-bubble { background: var(--sk-primary); color: var(--sk-dark); border-top-right-radius: 4px; font-weight: 500; }
+    .sk-bubble ul { margin: 6px 0 0; padding-left: 18px; }
+    .sk-bubble li { margin-bottom: 3px; }
+    .sk-bubble strong { font-weight: 700; }
+    .sk-bubble em { font-style: italic; }
+    .sk-contact-btn {
+      display: inline-block; margin-top: 10px;
+      background: var(--sk-primary); color: var(--sk-dark);
+      border: none; padding: 9px 18px; border-radius: 20px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: background 0.15s; font-family: inherit;
+    }
+    .sk-contact-btn:hover { background: var(--sk-primary-dark); }
+    .sk-typing { display: flex; gap: 4px; padding: 10px 14px; background: var(--sk-gray); border-radius: 14px; border-top-left-radius: 4px; width: fit-content; }
+    .sk-typing span { width: 7px; height: 7px; background: #aaa; border-radius: 50%; animation: skBounce 1.2s infinite; }
+    .sk-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .sk-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes skBounce { 0%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-6px); } }
+    #sk-input-area { padding: 12px 14px; border-top: 1px solid var(--sk-gray2); display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+    #sk-input { flex: 1; border: 1.5px solid var(--sk-gray2); border-radius: 22px; padding: 9px 14px; font-size: 14px; outline: none; resize: none; line-height: 1.4; max-height: 100px; overflow-y: auto; font-family: inherit; color: var(--sk-text); background: var(--sk-white); transition: border-color 0.15s; }
+    #sk-input:focus { border-color: var(--sk-primary); }
+    #sk-input::placeholder { color: #aaa; }
+    #sk-send { width: 38px; height: 38px; background: var(--sk-primary); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s; }
+    #sk-send:hover { background: var(--sk-primary-dark); }
+    #sk-send:disabled { background: #ccc; cursor: not-allowed; }
+    #sk-send svg { width: 17px; height: 17px; }
+    .sk-footer { text-align: center; padding: 6px 14px 10px; font-size: 11px; color: #bbb; flex-shrink: 0; }
+    .sk-footer a { color: #bbb; text-decoration: none; }
+    .sk-footer a:hover { color: #999; }
+    .sk-form-scroll { overflow-y: auto; padding: 16px; flex: 1; }
+    .sk-form-scroll::-webkit-scrollbar { width: 4px; }
+    .sk-form-scroll::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+    .sk-field { margin-bottom: 12px; }
+    .sk-field label { display: block; font-size: 11px; font-weight: 700; color: var(--sk-text-soft); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sk-field input, .sk-field textarea, .sk-field select { width: 100%; border: 1.5px solid var(--sk-gray2); border-radius: 8px; padding: 9px 12px; font-size: 14px; font-family: inherit; color: var(--sk-text); background: var(--sk-white); outline: none; box-sizing: border-box; transition: border-color 0.15s; -webkit-appearance: none; appearance: none; }
+    .sk-field input:focus, .sk-field textarea:focus, .sk-field select:focus { border-color: var(--sk-primary); }
+    .sk-field textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
+    .sk-phone-row { display: flex; gap: 8px; }
+    .sk-phone-row select { width: 88px; flex-shrink: 0; }
+    .sk-phone-row input { flex: 1; }
+    .sk-submit { width: 100%; background: var(--sk-primary); color: var(--sk-dark); border: none; border-radius: 10px; padding: 12px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 4px; transition: background 0.15s; font-family: inherit; }
+    .sk-submit:hover { background: var(--sk-primary-dark); }
+    .sk-submit:disabled { background: #ddd; color: #999; cursor: not-allowed; }
+    #sk-success { display: none; text-align: center; padding: 32px 16px; }
+    #sk-success .sk-success-icon { font-size: 44px; margin-bottom: 12px; }
+    #sk-success h3 { margin: 0 0 8px; font-size: 19px; color: var(--sk-dark); }
+    #sk-success p { margin: 0; font-size: 14px; color: var(--sk-text-soft); }
+    @media (max-width: 430px) {
+      #sk-chat-win, #sk-form-win { width: calc(100vw - 16px); right: 8px; bottom: 88px; }
+      #sk-btn { right: 16px; bottom: 16px; }
+    }
+  </style>
+
+  <!-- Botón flotante -->
+  <button id="sk-btn" title="Chat con Skuadz" aria-label="Abrir chat Skuadz">
+    <img src="https://play-lh.googleusercontent.com/pelesik60HsUYa4ZM2v-PGbFHHf-c9PVUU7UfP6CbaBl1gMZJtf1xvAJ7fdAW8NIjjDOzxTsVpy92h8cJaxi2Q=w240-h480-rw" alt="Skuadz">
+  </button>
+
+  <!-- Ventana de chat -->
+  <div id="sk-chat-win" class="sk-hidden" role="dialog" aria-label="Chat Skuadz">
+    <div class="sk-header">
+      <div class="sk-header-avatar">
+        <img src="https://play-lh.googleusercontent.com/pelesik60HsUYa4ZM2v-PGbFHHf-c9PVUU7UfP6CbaBl1gMZJtf1xvAJ7fdAW8NIjjDOzxTsVpy92h8cJaxi2Q=w240-h480-rw" alt="Skuadz">
+      </div>
+      <div class="sk-header-info">
+        <div class="sk-header-name">Skuadz</div>
+        <div class="sk-header-sub">Asistente virtual · En línea</div>
+      </div>
+      <button class="sk-header-close" id="sk-close" aria-label="Cerrar">×</button>
+    </div>
+    <div id="sk-messages" aria-live="polite"></div>
+    <div id="sk-input-area">
+      <textarea id="sk-input" placeholder="Escribe tu mensaje..." rows="1" aria-label="Escribe tu mensaje"></textarea>
+      <button id="sk-send" aria-label="Enviar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+    <div class="sk-footer">Powered by <a href="https://ijvagency.com" target="_blank" rel="noopener">IJV Agency</a></div>
+  </div>
+
+  <!-- Formulario de leads -->
+  <div id="sk-form-win" class="sk-hidden" role="dialog" aria-label="Formulario de contacto Skuadz">
+    <div class="sk-header">
+      <span class="sk-header-title">Hablemos de tu club</span>
+      <button class="sk-header-close" id="sk-form-close" aria-label="Cerrar formulario">×</button>
+    </div>
+    <div class="sk-form-scroll">
+      <div id="sk-form-body">
+        <div class="sk-field">
+          <label>Nombre *</label>
+          <input type="text" id="sk-nombre" placeholder="Tu nombre completo" required>
+        </div>
+        <div class="sk-field">
+          <label>Email *</label>
+          <input type="email" id="sk-email" placeholder="tu@email.com" required>
+        </div>
+        <div class="sk-field">
+          <label>Teléfono</label>
+          <div class="sk-phone-row">
+            <select id="sk-prefix">
+              <option value="+34">🇪🇸 +34</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+39">🇮🇹 +39</option>
+              <option value="+351">🇵🇹 +351</option>
+              <option value="+52">🇲🇽 +52</option>
+              <option value="+54">🇦🇷 +54</option>
+              <option value="+56">🇨🇱 +56</option>
+              <option value="+57">🇨🇴 +57</option>
+            </select>
+            <input type="tel" id="sk-telefono" placeholder="600 000 000">
+          </div>
+        </div>
+        <div class="sk-field">
+          <label>Nombre del club *</label>
+          <input type="text" id="sk-club" placeholder="Ej: Club Atlético Ejemplo">
+        </div>
+        <div class="sk-field">
+          <label>Deporte principal</label>
+          <input type="text" id="sk-deporte" placeholder="Ej: Fútbol, Baloncesto, Atletismo...">
+        </div>
+        <div class="sk-field">
+          <label>Equipos / jugadores</label>
+          <input type="text" id="sk-equipos" placeholder="Ej: 5 equipos, 80 jugadores...">
+        </div>
+        <div class="sk-field">
+          <label>¿Qué necesitas?</label>
+          <textarea id="sk-mensaje" placeholder="Cuéntanos sobre tu club y qué te gustaría mejorar..."></textarea>
+        </div>
+        <button class="sk-submit" id="sk-submit">Quiero saber más</button>
+      </div>
+      <div id="sk-success">
+        <div class="sk-success-icon">🏆</div>
+        <h3>¡Recibido!</h3>
+        <p>El equipo de Skuadz se pondrá en contacto contigo pronto.</p>
+      </div>
+    </div>
+    <div class="sk-footer">Powered by <a href="https://ijvagency.com" target="_blank" rel="noopener">IJV Agency</a></div>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+    const SKUADZ_WEBHOOK = 'https://n8n-jcg4epwgyztosnmbxghhwvdv.34.133.34.116.sslip.io/webhook/skuadz-agent';
+    const SKUADZ_LEADS   = 'https://n8n-jcg4epwgyztosnmbxghhwvdv.34.133.34.116.sslip.io/webhook/skuadz-leads';
+    const LOGO = 'https://play-lh.googleusercontent.com/pelesik60HsUYa4ZM2v-PGbFHHf-c9PVUU7UfP6CbaBl1gMZJtf1xvAJ7fdAW8NIjjDOzxTsVpy92h8cJaxi2Q=w240-h480-rw';
+    const SESSION_KEY  = 'skuadz_sid';
+    const MESSAGES_KEY = 'skuadz_msgs';
+
+    let sessionId = sessionStorage.getItem(SESSION_KEY);
+    if (!sessionId) { sessionId = crypto.randomUUID(); sessionStorage.setItem(SESSION_KEY, sessionId); }
+
+    const btn       = document.getElementById('sk-btn');
+    const chatWin   = document.getElementById('sk-chat-win');
+    const formWin   = document.getElementById('sk-form-win');
+    const closeChat = document.getElementById('sk-close');
+    const closeForm = document.getElementById('sk-form-close');
+    const msgs      = document.getElementById('sk-messages');
+    const input     = document.getElementById('sk-input');
+    const sendBtn   = document.getElementById('sk-send');
+    const submitBtn = document.getElementById('sk-submit');
+
+    let isOpen = false, loading = false, formShown = false;
+
+    function md(text) {
+      return text
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g,'<em>$1</em>')
+        .replace(/^[-•]\s(.+)$/gm,'<li>$1</li>')
+        .replace(/(<li>[\s\S]*<\/li>)/g,'<ul>$1</ul>')
+        .replace(/\n/g,'<br>');
+    }
+
+    function addMsg(text, role) {
+      const div = document.createElement('div');
+      div.className = 'sk-msg ' + role;
+      if (role === 'bot') {
+        div.innerHTML = `<div class="sk-avatar"><img src="${LOGO}" alt=""></div><div class="sk-bubble"></div>`;
+        div.querySelector('.sk-bubble').innerHTML = md(text);
+      } else {
+        div.innerHTML = `<div class="sk-bubble">${md(text)}</div>`;
+      }
+      msgs.appendChild(div);
+      scrollBottom(); saveMessages();
+      return div;
+    }
+
+    function addContactBtn(msgDiv) {
+      const b = document.createElement('button');
+      b.className = 'sk-contact-btn'; b.textContent = 'Quiero saber más'; b.onclick = openForm;
+      msgDiv.querySelector('.sk-bubble').appendChild(document.createElement('br'));
+      msgDiv.querySelector('.sk-bubble').appendChild(b);
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'sk-msg bot'; div.id = 'sk-typing';
+      div.innerHTML = `<div class="sk-avatar"><img src="${LOGO}" alt=""></div><div class="sk-typing"><span></span><span></span><span></span></div>`;
+      msgs.appendChild(div); scrollBottom(); return div;
+    }
+
+    function scrollBottom() { msgs.scrollTop = msgs.scrollHeight; }
+    function saveMessages() { sessionStorage.setItem(MESSAGES_KEY, msgs.innerHTML); }
+
+    function restoreMessages() {
+      const saved = sessionStorage.getItem(MESSAGES_KEY);
+      if (saved) {
+        msgs.innerHTML = saved;
+        msgs.querySelectorAll('.sk-contact-btn').forEach(b => { b.onclick = openForm; });
+        scrollBottom();
+      } else {
+        addMsg('¡Hola! Soy el asistente de Skuadz. ¿Tienes preguntas sobre nuestra plataforma o cómo puede ayudar a tu club?', 'bot');
+      }
+    }
+
+    async function send() {
+      if (loading) return;
+      const text = input.value.trim(); if (!text) return;
+      input.value = ''; input.style.height = 'auto';
+      addMsg(text, 'user'); loading = true; sendBtn.disabled = true;
+      const typing = showTyping();
+      try {
+        const res = await fetch(SKUADZ_WEBHOOK, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, sessionId })
+        });
+        const data = await res.json(); typing.remove();
+        const reply = data.output || data.message || 'Lo siento, no pude procesar tu mensaje.';
+        const botMsg = addMsg(reply, 'bot');
+        if (!formShown && (reply.toLowerCase().includes('equipo') || reply.toLowerCase().includes('contactar'))) {
+          addContactBtn(botMsg); saveMessages();
+        }
+      } catch {
+        typing.remove(); addMsg('Hubo un error de conexión. Inténtalo de nuevo.', 'bot');
+      } finally {
+        loading = false; sendBtn.disabled = false;
+      }
+    }
+
+    function openForm() { formShown = true; chatWin.classList.add('sk-hidden'); formWin.classList.remove('sk-hidden'); }
+    function closeFormFn() { formWin.classList.add('sk-hidden'); chatWin.classList.remove('sk-hidden'); }
+
+    submitBtn.addEventListener('click', async () => {
+      const nombre = document.getElementById('sk-nombre').value.trim();
+      const email  = document.getElementById('sk-email').value.trim();
+      if (!nombre || !email) { alert('Por favor, completa los campos obligatorios (Nombre y Email).'); return; }
+      const prefix = document.getElementById('sk-prefix').value;
+      const tel    = document.getElementById('sk-telefono').value.trim();
+      submitBtn.disabled = true; submitBtn.textContent = 'Enviando...';
+      try {
+        await fetch(SKUADZ_LEADS, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre, email,
+            telefono: tel ? `${prefix} ${tel}` : '',
+            club_nombre: document.getElementById('sk-club').value.trim(),
+            deporte:     document.getElementById('sk-deporte').value.trim(),
+            num_equipos: document.getElementById('sk-equipos').value.trim(),
+            mensaje:     document.getElementById('sk-mensaje').value.trim()
+          })
+        });
+        document.getElementById('sk-form-body').style.display = 'none';
+        document.getElementById('sk-success').style.display = 'block';
+        setTimeout(() => {
+          closeFormFn();
+          document.getElementById('sk-form-body').style.display = 'block';
+          document.getElementById('sk-success').style.display = 'none';
+          submitBtn.disabled = false; submitBtn.textContent = 'Quiero saber más';
+        }, 3000);
+      } catch {
+        submitBtn.disabled = false; submitBtn.textContent = 'Quiero saber más';
+        alert('Error al enviar. Inténtalo de nuevo.');
+      }
+    });
+
+    btn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) { chatWin.classList.remove('sk-hidden'); restoreMessages(); setTimeout(() => input.focus(), 100); }
+      else { chatWin.classList.add('sk-hidden'); formWin.classList.add('sk-hidden'); }
+    });
+    closeChat.addEventListener('click', () => { isOpen = false; chatWin.classList.add('sk-hidden'); });
+    closeForm.addEventListener('click', closeFormFn);
+    sendBtn.addEventListener('click', send);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+    input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 100) + 'px'; });
+  })();
+  </script>
+
+</body>
+</html>

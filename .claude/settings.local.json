@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(npx puppeteer:*)",
+      "Bash(npm list:*)",
+      "Bash(npm install:*)",
+      "Bash(open \"/Users/nacho/Desktop/Skuadz Agent/index.html\")",
+      "Bash(gh auth:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}

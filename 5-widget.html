@@ -1,0 +1,561 @@
+<!-- ================================================================
+     SKUADZ — Widget de Chat Embebido
+     Versión: 1.0 | Creado por IJV Agency
+
+     CONFIGURACIÓN RÁPIDA (busca los comentarios CONFIGURAR):
+     1. Reemplaza SKUADZ_WEBHOOK con la URL de tu webhook de chat
+     2. Reemplaza SKUADZ_LEADS con la URL de tu webhook de leads
+     3. Pega este código en tu página (Antigravity, Webflow, HTML, etc.)
+     ================================================================ -->
+
+<style>
+  :root {
+    --sk-primary: #CCFF00;
+    --sk-primary-dark: #aad900;
+    --sk-dark: #111111;
+    --sk-dark2: #1e1e1e;
+    --sk-gray: #f5f5f5;
+    --sk-gray2: #e5e5e5;
+    --sk-text: #222222;
+    --sk-text-soft: #666666;
+    --sk-white: #ffffff;
+    --sk-radius: 16px;
+  }
+
+  /* === BOTÓN FLOTANTE === */
+  #sk-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--sk-dark);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.28);
+    z-index: 9999;
+    overflow: hidden;
+    padding: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #sk-btn:hover { transform: scale(1.07); box-shadow: 0 6px 28px rgba(0,0,0,0.36); }
+  #sk-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* === VENTANA COMPARTIDA === */
+  #sk-chat-win, #sk-form-win {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 370px;
+    max-height: 580px;
+    background: var(--sk-white);
+    border-radius: var(--sk-radius);
+    box-shadow: 0 10px 48px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    z-index: 9998;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  #sk-chat-win.sk-hidden, #sk-form-win.sk-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+  }
+
+  /* === HEADER === */
+  .sk-header {
+    background: var(--sk-dark);
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .sk-header-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%; overflow: hidden;
+    background: var(--sk-dark2); flex-shrink: 0;
+  }
+  .sk-header-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .sk-header-info { flex: 1; }
+  .sk-header-name { font-weight: 700; font-size: 15px; color: var(--sk-white); }
+  .sk-header-sub { font-size: 12px; color: var(--sk-primary); margin-top: 1px; }
+  .sk-header-close {
+    background: none; border: none; color: #777; font-size: 22px;
+    cursor: pointer; padding: 0; line-height: 1; transition: color 0.15s;
+  }
+  .sk-header-close:hover { color: var(--sk-white); }
+  .sk-header-title { font-weight: 700; font-size: 15px; color: var(--sk-white); flex: 1; }
+
+  /* === MENSAJES === */
+  #sk-messages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 12px; min-height: 0;
+  }
+  #sk-messages::-webkit-scrollbar { width: 4px; }
+  #sk-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+  .sk-msg { display: flex; gap: 8px; max-width: 88%; }
+  .sk-msg.bot { align-self: flex-start; align-items: flex-start; }
+  .sk-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+
+  .sk-avatar {
+    width: 28px; height: 28px; border-radius: 50%; overflow: hidden;
+    flex-shrink: 0; background: var(--sk-dark); margin-top: 2px;
+  }
+  .sk-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  .sk-bubble {
+    padding: 10px 14px; border-radius: 14px;
+    font-size: 14px; line-height: 1.55; color: var(--sk-text);
+  }
+  .sk-msg.bot .sk-bubble {
+    background: var(--sk-gray); border-top-left-radius: 4px;
+  }
+  .sk-msg.user .sk-bubble {
+    background: var(--sk-primary); color: var(--sk-dark);
+    border-top-right-radius: 4px; font-weight: 500;
+  }
+  .sk-bubble ul { margin: 6px 0 0; padding-left: 18px; }
+  .sk-bubble li { margin-bottom: 3px; }
+  .sk-bubble strong { font-weight: 700; }
+  .sk-bubble em { font-style: italic; }
+
+  /* === BOTÓN CONTACTAR === */
+  .sk-contact-btn {
+    display: inline-block; margin-top: 10px;
+    background: var(--sk-primary); color: var(--sk-dark);
+    border: none; padding: 9px 18px; border-radius: 20px;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    transition: background 0.15s; font-family: inherit;
+  }
+  .sk-contact-btn:hover { background: var(--sk-primary-dark); }
+
+  /* === TYPING === */
+  .sk-typing {
+    display: flex; gap: 4px; padding: 10px 14px;
+    background: var(--sk-gray); border-radius: 14px;
+    border-top-left-radius: 4px; width: fit-content;
+  }
+  .sk-typing span {
+    width: 7px; height: 7px; background: #aaa;
+    border-radius: 50%; animation: skBounce 1.2s infinite;
+  }
+  .sk-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .sk-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes skBounce {
+    0%,80%,100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+  }
+
+  /* === INPUT === */
+  #sk-input-area {
+    padding: 12px 14px; border-top: 1px solid var(--sk-gray2);
+    display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+  }
+  #sk-input {
+    flex: 1; border: 1.5px solid var(--sk-gray2); border-radius: 22px;
+    padding: 9px 14px; font-size: 14px; outline: none; resize: none;
+    line-height: 1.4; max-height: 100px; overflow-y: auto;
+    font-family: inherit; color: var(--sk-text); background: var(--sk-white);
+    transition: border-color 0.15s;
+  }
+  #sk-input:focus { border-color: var(--sk-primary); }
+  #sk-input::placeholder { color: #aaa; }
+
+  #sk-send {
+    width: 38px; height: 38px; background: var(--sk-primary); border: none;
+    border-radius: 50%; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0; transition: background 0.15s;
+  }
+  #sk-send:hover { background: var(--sk-primary-dark); }
+  #sk-send:disabled { background: #ccc; cursor: not-allowed; }
+  #sk-send svg { width: 17px; height: 17px; }
+
+  /* === FOOTER === */
+  .sk-footer {
+    text-align: center; padding: 6px 14px 10px;
+    font-size: 11px; color: #bbb; flex-shrink: 0;
+  }
+  .sk-footer a { color: #bbb; text-decoration: none; }
+  .sk-footer a:hover { color: #999; }
+
+  /* === FORMULARIO === */
+  .sk-form-scroll {
+    overflow-y: auto; padding: 16px; flex: 1;
+  }
+  .sk-form-scroll::-webkit-scrollbar { width: 4px; }
+  .sk-form-scroll::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+  .sk-field { margin-bottom: 12px; }
+  .sk-field label {
+    display: block; font-size: 11px; font-weight: 700; color: var(--sk-text-soft);
+    margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .sk-field input, .sk-field textarea, .sk-field select {
+    width: 100%; border: 1.5px solid var(--sk-gray2); border-radius: 8px;
+    padding: 9px 12px; font-size: 14px; font-family: inherit;
+    color: var(--sk-text); background: var(--sk-white); outline: none;
+    box-sizing: border-box; transition: border-color 0.15s; -webkit-appearance: none;
+  }
+  .sk-field input:focus, .sk-field textarea:focus, .sk-field select:focus {
+    border-color: var(--sk-primary);
+  }
+  .sk-field textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
+
+  .sk-phone-row { display: flex; gap: 8px; }
+  .sk-phone-row select { width: 88px; flex-shrink: 0; }
+  .sk-phone-row input { flex: 1; }
+
+  .sk-submit {
+    width: 100%; background: var(--sk-primary); color: var(--sk-dark);
+    border: none; border-radius: 10px; padding: 12px; font-size: 15px;
+    font-weight: 700; cursor: pointer; margin-top: 4px;
+    transition: background 0.15s; font-family: inherit;
+  }
+  .sk-submit:hover { background: var(--sk-primary-dark); }
+  .sk-submit:disabled { background: #ddd; color: #999; cursor: not-allowed; }
+
+  #sk-success {
+    display: none; text-align: center; padding: 32px 16px;
+  }
+  #sk-success .sk-success-icon { font-size: 44px; margin-bottom: 12px; }
+  #sk-success h3 { margin: 0 0 8px; font-size: 19px; color: var(--sk-dark); }
+  #sk-success p { margin: 0; font-size: 14px; color: var(--sk-text-soft); }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 430px) {
+    #sk-chat-win, #sk-form-win {
+      width: calc(100vw - 16px);
+      right: 8px; bottom: 88px;
+    }
+    #sk-btn { right: 16px; bottom: 16px; }
+  }
+</style>
+
+<!-- ─── BOTÓN FLOTANTE ─── -->
+<button id="sk-btn" title="Chat con Skuadz" aria-label="Abrir chat Skuadz">
+  <img src="https://play-lh.googleusercontent.com/pelesik60HsUYa4ZM2v-PGbFHHf-c9PVUU7UfP6CbaBl1gMZJtf1xvAJ7fdAW8NIjjDOzxTsVpy92h8cJaxi2Q=w240-h480-rw" alt="Skuadz">
+</button>
+
+<!-- ─── VENTANA DE CHAT ─── -->
+<div id="sk-chat-win" class="sk-hidden" role="dialog" aria-label="Chat Skuadz">
+  <div class="sk-header">
+    <div class="sk-header-avatar">
+      <img src="https://play-lh.googleusercontent.com/pelesik60HsUYa4ZM2v-PGbFHHf-c9PVUU7UfP6CbaBl1gMZJtf1xvAJ7fdAW8NIjjDOzxTsVpy92h8cJaxi2Q=w240-h480-rw" alt="Skuadz">
+    </div>
+    <div class="sk-header-info">
+      <div class="sk-header-name">Skuadz</div>
+      <div class="sk-header-sub">Asistente virtual · En línea</div>
+    </div>
+    <button class="sk-header-close" id="sk-close" aria-label="Cerrar">×</button>
+  </div>
+
+  <div id="sk-messages" aria-live="polite"></div>
+
+  <div id="sk-input-area">
+    <textarea id="sk-input" placeholder="Escribe tu mensaje..." rows="1" aria-label="Escribe tu mensaje"></textarea>
+    <button id="sk-send" aria-label="Enviar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+  </div>
+
+  <div class="sk-footer">
+    Powered by <a href="https://ijvagency.com" target="_blank" rel="noopener">IJV Agency</a>
+  </div>
+</div>
+
+<!-- ─── FORMULARIO DE LEADS ─── -->
+<div id="sk-form-win" class="sk-hidden" role="dialog" aria-label="Formulario de contacto Skuadz">
+  <div class="sk-header">
+    <span class="sk-header-title">Hablemos de tu club</span>
+    <button class="sk-header-close" id="sk-form-close" aria-label="Cerrar formulario">×</button>
+  </div>
+
+  <div class="sk-form-scroll">
+    <div id="sk-form-body">
+      <div class="sk-field">
+        <label>Nombre *</label>
+        <input type="text" id="sk-nombre" placeholder="Tu nombre completo" required>
+      </div>
+      <div class="sk-field">
+        <label>Email *</label>
+        <input type="email" id="sk-email" placeholder="tu@email.com" required>
+      </div>
+      <div class="sk-field">
+        <label>Teléfono</label>
+        <div class="sk-phone-row">
+          <select id="sk-prefix">
+            <option value="+34">🇪🇸 +34</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+33">🇫🇷 +33</option>
+            <option value="+49">🇩🇪 +49</option>
+            <option value="+39">🇮🇹 +39</option>
+            <option value="+351">🇵🇹 +351</option>
+            <option value="+52">🇲🇽 +52</option>
+            <option value="+54">🇦🇷 +54</option>
+            <option value="+56">🇨🇱 +56</option>
+            <option value="+57">🇨🇴 +57</option>
+          </select>
+          <input type="tel" id="sk-telefono" placeholder="600 000 000">
+        </div>
+      </div>
+      <div class="sk-field">
+        <label>Nombre del club *</label>
+        <input type="text" id="sk-club" placeholder="Ej: Club Atlético Ejemplo">
+      </div>
+      <div class="sk-field">
+        <label>Deporte principal</label>
+        <input type="text" id="sk-deporte" placeholder="Ej: Fútbol, Baloncesto, Atletismo...">
+      </div>
+      <div class="sk-field">
+        <label>Equipos / jugadores</label>
+        <input type="text" id="sk-equipos" placeholder="Ej: 5 equipos, 80 jugadores...">
+      </div>
+      <div class="sk-field">
+        <label>¿Qué necesitas?</label>
+        <textarea id="sk-mensaje" placeholder="Cuéntanos sobre tu club y qué te gustaría mejorar..."></textarea>
+      </div>
+      <button class="sk-submit" id="sk-submit">Quiero saber más</button>
+    </div>
+
+    <div id="sk-success">
+      <div class="sk-success-icon">🏆</div>
+      <h3>¡Recibido!</h3>
+      <p>El equipo de Skuadz se pondrá en contacto contigo pronto.</p>
+    </div>
+  </div>
+
+  <div class="sk-footer">
+    Powered by <a href="https://ijvagency.com" target="_blank" rel="noopener">IJV Agency</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ============================================================
+  // CONFIGURAR — Reemplaza con tus URLs de N8N
+  // ============================================================
+  const SKUADZ_WEBHOOK = 'https://n8n-jcg4epwgyztosnmbxghhwvdv.34.133.34.116.sslip.io/webhook/skuadz-agent';
+  const SKUADZ_LEADS   = 'https://n8n-jcg4epwgyztosnmbxghhwvdv.34.133.34.116.sslip.io/webhook/skuadz-leads';
+  // ============================================================
+
+  const LOGO = 'https://play-lh.googleusercontent.com/pelesik60HsUYa4ZM2v-PGbFHHf-c9PVUU7UfP6CbaBl1gMZJtf1xvAJ7fdAW8NIjjDOzxTsVpy92h8cJaxi2Q=w240-h480-rw';
+  const SESSION_KEY  = 'skuadz_sid';
+  const MESSAGES_KEY = 'skuadz_msgs';
+
+  let sessionId = sessionStorage.getItem(SESSION_KEY);
+  if (!sessionId) {
+    sessionId = crypto.randomUUID();
+    sessionStorage.setItem(SESSION_KEY, sessionId);
+  }
+
+  // Referencias
+  const btn       = document.getElementById('sk-btn');
+  const chatWin   = document.getElementById('sk-chat-win');
+  const formWin   = document.getElementById('sk-form-win');
+  const closeChat = document.getElementById('sk-close');
+  const closeForm = document.getElementById('sk-form-close');
+  const msgs      = document.getElementById('sk-messages');
+  const input     = document.getElementById('sk-input');
+  const sendBtn   = document.getElementById('sk-send');
+  const submitBtn = document.getElementById('sk-submit');
+
+  let isOpen = false;
+  let loading = false;
+  let formShown = false;
+
+  // ─── MARKDOWN ───────────────────────────────────────────────
+  function md(text) {
+    return text
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/^[-•]\s(.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>[\s\S]*<\/li>)/g, '<ul>$1</ul>')
+      .replace(/\n/g, '<br>');
+  }
+
+  // ─── MENSAJES ────────────────────────────────────────────────
+  function addMsg(text, role) {
+    const div = document.createElement('div');
+    div.className = 'sk-msg ' + role;
+    if (role === 'bot') {
+      div.innerHTML = `<div class="sk-avatar"><img src="${LOGO}" alt=""></div><div class="sk-bubble"></div>`;
+      div.querySelector('.sk-bubble').innerHTML = md(text);
+    } else {
+      div.innerHTML = `<div class="sk-bubble">${md(text)}</div>`;
+    }
+    msgs.appendChild(div);
+    scrollBottom();
+    saveMessages();
+    return div;
+  }
+
+  function addContactBtn(msgDiv) {
+    const b = document.createElement('button');
+    b.className = 'sk-contact-btn';
+    b.textContent = 'Quiero saber más';
+    b.onclick = openForm;
+    msgDiv.querySelector('.sk-bubble').appendChild(document.createElement('br'));
+    msgDiv.querySelector('.sk-bubble').appendChild(b);
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'sk-msg bot';
+    div.id = 'sk-typing';
+    div.innerHTML = `<div class="sk-avatar"><img src="${LOGO}" alt=""></div><div class="sk-typing"><span></span><span></span><span></span></div>`;
+    msgs.appendChild(div);
+    scrollBottom();
+    return div;
+  }
+
+  function scrollBottom() { msgs.scrollTop = msgs.scrollHeight; }
+
+  // ─── PERSISTENCIA ────────────────────────────────────────────
+  function saveMessages() {
+    sessionStorage.setItem(MESSAGES_KEY, msgs.innerHTML);
+  }
+
+  function restoreMessages() {
+    const saved = sessionStorage.getItem(MESSAGES_KEY);
+    if (saved) {
+      msgs.innerHTML = saved;
+      msgs.querySelectorAll('.sk-contact-btn').forEach(b => { b.onclick = openForm; });
+      scrollBottom();
+    } else {
+      addMsg('¡Hola! Soy el asistente de Skuadz. ¿Tienes preguntas sobre nuestra plataforma o cómo puede ayudar a tu club?', 'bot');
+    }
+  }
+
+  // ─── ENVÍO ───────────────────────────────────────────────────
+  async function send() {
+    if (loading) return;
+    const text = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    input.style.height = 'auto';
+    addMsg(text, 'user');
+    loading = true;
+    sendBtn.disabled = true;
+    const typing = showTyping();
+
+    try {
+      const res = await fetch(SKUADZ_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, sessionId })
+      });
+      const data = await res.json();
+      typing.remove();
+      const reply = data.output || data.message || 'Lo siento, no pude procesar tu mensaje.';
+      const botMsg = addMsg(reply, 'bot');
+      if (!formShown && (reply.toLowerCase().includes('equipo') || reply.toLowerCase().includes('contactar'))) {
+        addContactBtn(botMsg);
+        saveMessages();
+      }
+    } catch {
+      typing.remove();
+      addMsg('Hubo un error de conexión. Inténtalo de nuevo.', 'bot');
+    } finally {
+      loading = false;
+      sendBtn.disabled = false;
+    }
+  }
+
+  // ─── FORMULARIO ──────────────────────────────────────────────
+  function openForm() {
+    formShown = true;
+    chatWin.classList.add('sk-hidden');
+    formWin.classList.remove('sk-hidden');
+  }
+
+  function closeFormFn() {
+    formWin.classList.add('sk-hidden');
+    chatWin.classList.remove('sk-hidden');
+  }
+
+  submitBtn.addEventListener('click', async () => {
+    const nombre = document.getElementById('sk-nombre').value.trim();
+    const email  = document.getElementById('sk-email').value.trim();
+    if (!nombre || !email) {
+      alert('Por favor, completa los campos obligatorios (Nombre y Email).');
+      return;
+    }
+    const prefix   = document.getElementById('sk-prefix').value;
+    const tel      = document.getElementById('sk-telefono').value.trim();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      await fetch(SKUADZ_LEADS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre,
+          email,
+          telefono: tel ? `${prefix} ${tel}` : '',
+          club_nombre: document.getElementById('sk-club').value.trim(),
+          deporte:     document.getElementById('sk-deporte').value.trim(),
+          num_equipos: document.getElementById('sk-equipos').value.trim(),
+          mensaje:     document.getElementById('sk-mensaje').value.trim()
+        })
+      });
+      document.getElementById('sk-form-body').style.display = 'none';
+      document.getElementById('sk-success').style.display = 'block';
+      setTimeout(() => {
+        closeFormFn();
+        document.getElementById('sk-form-body').style.display = 'block';
+        document.getElementById('sk-success').style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Quiero saber más';
+      }, 3000);
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Quiero saber más';
+      alert('Error al enviar. Inténtalo de nuevo.');
+    }
+  });
+
+  // ─── CONTROLES UI ────────────────────────────────────────────
+  btn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      chatWin.classList.remove('sk-hidden');
+      restoreMessages();
+      setTimeout(() => input.focus(), 100);
+    } else {
+      chatWin.classList.add('sk-hidden');
+      formWin.classList.add('sk-hidden');
+    }
+  });
+
+  closeChat.addEventListener('click', () => {
+    isOpen = false;
+    chatWin.classList.add('sk-hidden');
+  });
+
+  closeForm.addEventListener('click', closeFormFn);
+  sendBtn.addEventListener('click', send);
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+  });
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+  });
+
+})();
+</script>
